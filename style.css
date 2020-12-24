@@ -1,0 +1,72 @@
+input{
+    font-size:1rem;
+    padding:0.5rem;
+    margin:0.5rem;
+    display:inline-block;
+}
+
+#addForm, #updateForm{
+    width:30%;
+    background:lightgrey;
+    text-align:center;
+    padding:1rem;
+    margin:auto;
+}
+
+#updateForm{
+    display:none;
+}
+
+#updateForm h2{
+    color:purple;
+}
+
+button{
+    padding:0.5rem;
+    font-size:1rem;
+    background-color: green;
+    color:white;
+}
+
+button[onclick="showDelForm()"],
+[onclick="del()"] {
+    background:red;
+}
+
+#div{
+ margin:1rem;
+ padding:1rem;
+}
+
+#delContainer{
+    display:none;
+}
+
+#delContainer h2{
+    color:red;
+}
+
+#tableDiv{
+    display:none;
+}
+
+table,th,tr,td{
+    border:2px solid black;
+    border-collapse: collapse;
+}
+
+button[onclick="sorting()"]{
+ background-color: blue;
+}
+
+button[onclick="update()"]{
+    background-color:rgb(164, 37, 196);
+}
+
+button[onclick="showRecords()"]{
+    background-color:rgb(37, 164, 196);
+}
+
+#recordTableDiv{
+    display:none;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Record</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="recordTableDiv">
+        <table id="tableRecord">
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <form action="" id="updateForm"><!---------update form------------>
+        <h2>Enter Email of record which you want to update</h2>
+        <input type="text" name="fname" id="fnamee" placeholder="Enter Name...">
+        <input type="email" name="email" id="Updtemail" placeholder="Enter Email...">
+        <input type="tel" name="phone" id="phonee" placeholder="Enter Phone..">
+        <button type="button"  onclick="update()">SUBMIT</button>
+    </form>
+    <button type="button" onclick="update()">Update</button>
+
+    <script>
+        
+        let rcrdName = document.getElementById("nameRcrd");
+        let rcrdEmail = document.getElementById("emailRcrd");
+        let rcrdPhone = document.getElementById("phoneRcrd");
+        let name,email,phone;
+        
+        let localStorageArray = JSON.parse(localStorage.getItem("users"));
+        let len = localStorageArray.length;
+        let noOfRows = 10;
+        let noOfBtn;
+        if((len % noOfRows) == 0)   {
+            noOfBtn = len/noOfRows;
+        }else {
+            noOfBtn = len/noOfRows+1;
+        }
+
+        function pagination(start , end ,)   {
+            console.log(start);
+            console.log(end)
+            let tempArr = [];
+            for(let i = start; i < end; i++ ) {
+                tempArr.push(localStorageArray[i])
+            }
+            
+            document.getElementById("recordTableDiv").style.display = "block";
+            let table = document.getElementById("tableRecord");
+            table.innerText = "";
+            table.style.width = 550 + "px";
+            table.style.margin = "auto";
+            let rowhead = table.insertRow(0);
+            rowhead.insertCell(0).innerHTML = "<b>Name</b>";
+            rowhead.insertCell(1).innerHTML = "<b>Email</b>";
+            rowhead.insertCell(2).innerHTML = "<b>Phone</b>";
+            for(let index in tempArr)  {
+                let row = table.insertRow(-1);
+                cell1 = row.insertCell(0).innerHTML = tempArr[index].Name;
+                cell2 = row.insertCell(1).innerHTML = tempArr[index].Email;
+                cell3 = row.insertCell(2).innerHTML = tempArr[index].Phone ;
+            }
+        }
+
+        let i,btn,id;
+        for(i = 1; i <= noOfBtn; i++)   {
+            btn = document.createElement("button");
+            document.body.append(btn);
+            btn.type = "button";
+            btn.innerText = i;
+            btn.id= `btnn${i}`;
+            id = btn.id;
+            idBtn = document.getElementById(id);
+            idBtn.onclick = function()  {
+                pagination((this.id.substr(4)*noOfRows)-noOfRows , this.id.substr(4)*noOfRows )
+            }
+        } 
+            
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

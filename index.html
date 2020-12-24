@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="" id="addForm"><!---------add form------------>
+        <input type="text" name="fname" id="fname" placeholder="Enter Name...">
+        <input type="email" name="email" id="email" placeholder="Enter Email...">
+        <input type="tel" name="phone" id="phone" placeholder="Enter Phone..">
+        <button type="button"  onclick="add()">SUBMIT</button>
+        <button type="button" onclick="showDelForm()">DELETE</button>
+        <button type="button" onclick="sorting()">Sort</button>
+        <button type="button" onclick="showRecords()">Show Records</button>
+    </form>
+
+    <div id="div"></div>
+    
+    <div id="delContainer">
+        <h2>Enter email of record which you want to delete</h2>
+        <form action="" id="delForm"><!-------------delete form--------->
+            <input type="email"  id="emaill" placeholder="Enter Email...">
+            <button type="button" onclick="del()">DELETE</button>
+        </form>
+    </div>
+    
+    <div id="tableDiv">
+        <table id="table">
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+ </body>
+</html>
